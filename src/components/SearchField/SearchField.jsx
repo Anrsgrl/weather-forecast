@@ -5,7 +5,7 @@ import { BiSearchAlt } from "react-icons/bi"
 import axios from 'axios';
 import { WiHumidity, WiBarometer, WiWindy, WiThermometer } from "react-icons/wi";
 import { AiOutlineClose, AiOutlineLoading3Quarters } from "react-icons/ai";
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const SearchField = () => {
     const [data, setData] = useState("");
@@ -48,73 +48,66 @@ const SearchField = () => {
                 {error && <p className='pt-2 text-danger'>Make sure you entered the city name correctly</p>}
             </div>
             {searchModal &&
-                <AnimatePresence>
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.4 }}
-                        key={searchModal}
-                        className={searchModal ? "weather-modal modal-open" : "weather-modal"}>
-                        <button className='close-button' onClick={() => { setSearchModal(false) }}><AiOutlineClose /></button>
-                        <div className="weather-modal-content align-items-center d-flex flex-column">
-                            <div className="weather-image col-12">
-                                <img src={`https://openweathermap.org/img/wn/${data.weather[0]?.icon}@2x.png`} alt="icon" />
-                                <h4>{data.name}<span>/{data.sys?.country}</span></h4>
-                                <h6 className='pt-1'>{data.weather[0]?.description}</h6>
-                            </div>
-                            <div className="weather-infos col-12">
-                                <h6 className='weather-details'>Weather details</h6>
-                                <div className="row">
-                                    <div className="col-12">
-                                        <div className="single-info">
-                                            <div className="info-title">
-                                                <WiThermometer />
-                                                <h6>Temperature</h6>
-                                            </div>
-                                            <div className="weather-info">
-                                                <span>{data.main?.temp}°</span>
-                                            </div>
+                <div
+                    className={searchModal ? "weather-modal modal-open" : "weather-modal"}>
+                    <button className='close-button' onClick={() => { setSearchModal(false) }}><AiOutlineClose /></button>
+                    <div className="weather-modal-content align-items-center d-flex flex-column">
+                        <div className="weather-image col-12">
+                            <img src={`https://openweathermap.org/img/wn/${data.weather[0]?.icon}@2x.png`} alt="icon" />
+                            <h4>{data.name}<span>/{data.sys?.country}</span></h4>
+                            <h6 className='pt-1'>{data.weather[0]?.description}</h6>
+                        </div>
+                        <div className="weather-infos col-12">
+                            <h6 className='weather-details'>Weather details</h6>
+                            <div className="row">
+                                <div className="col-12">
+                                    <div className="single-info">
+                                        <div className="info-title">
+                                            <WiThermometer />
+                                            <h6>Temperature</h6>
+                                        </div>
+                                        <div className="weather-info">
+                                            <span>{data.main?.temp}°</span>
                                         </div>
                                     </div>
-                                    <div className="col-12">
-                                        <div className="single-info">
-                                            <div className="info-title">
-                                                <WiHumidity />
-                                                <h6>Humidity</h6>
-                                            </div>
-                                            <div className="weather-info">
-                                                <span>{data.main?.humidity}%</span>
-                                            </div>
+                                </div>
+                                <div className="col-12">
+                                    <div className="single-info">
+                                        <div className="info-title">
+                                            <WiHumidity />
+                                            <h6>Humidity</h6>
+                                        </div>
+                                        <div className="weather-info">
+                                            <span>{data.main?.humidity}%</span>
                                         </div>
                                     </div>
-                                    <div className="col-12">
-                                        <div className="single-info">
-                                            <div className="info-title">
-                                                <WiBarometer />
-                                                <h6>Pressure</h6>
-                                            </div>
-                                            <div className="weather-info">
-                                                <span>{data.main?.pressure}mbar</span>
-                                            </div>
+                                </div>
+                                <div className="col-12">
+                                    <div className="single-info">
+                                        <div className="info-title">
+                                            <WiBarometer />
+                                            <h6>Pressure</h6>
+                                        </div>
+                                        <div className="weather-info">
+                                            <span>{data.main?.pressure}mbar</span>
                                         </div>
                                     </div>
-                                    <div className="col-12">
-                                        <div className="single-info">
-                                            <div className="info-title">
-                                                <WiWindy />
-                                                <h6>Wind</h6>
-                                            </div>
-                                            <div className="weather-info">
-                                                <span>{data.wind?.speed} km/h</span>
-                                            </div>
+                                </div>
+                                <div className="col-12">
+                                    <div className="single-info">
+                                        <div className="info-title">
+                                            <WiWindy />
+                                            <h6>Wind</h6>
+                                        </div>
+                                        <div className="weather-info">
+                                            <span>{data.wind?.speed} km/h</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </motion.div>
-                </AnimatePresence>}
+                    </div>
+                </div>}
         </>
     )
 }
