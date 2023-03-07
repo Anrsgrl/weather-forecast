@@ -4,9 +4,15 @@
 
 .search-field {
     width: 500px;
+    padding: 0 20px;
 
     h5 {
         margin-bottom: 20px;
+
+        @media (max-width: 767px) {
+            font-size: 20px;
+            text-align: center;
+        }
     }
 
     .inputs {
