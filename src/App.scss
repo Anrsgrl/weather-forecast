@@ -1,3 +1,6 @@
+@import "./vendors/variables";
+@import "./vendors/mixins";
+
 * {
     box-sizing: border-box;
 }
@@ -5,4 +8,19 @@
 body {
     margin: 0;
     padding: 0;
+}
+
+.App {
+    height: 100vh;
+    color: $low-gray;
+    font-family: $main-font;
+    @include flexCenter;
+
+    img {
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        position: absolute;
+        filter: brightness(40%);
+    }
 }

@@ -1,0 +1,46 @@
+@import "../../vendors/mixins";
+@import "../../vendors/variables";
+
+
+.search-field {
+    width: 500px;
+
+    h5 {
+        margin-bottom: 20px;
+    }
+
+    .inputs {
+        position: relative;
+        z-index: 1;
+        @include flexCenter;
+
+        .form-control {
+            border-radius: 22px !important;
+            font-size: 14px !important;
+            padding: 6px 35px !important;
+
+            &:focus {
+                border-color: $main-green !important;
+                box-shadow: 0 0 0 2px $main-green !important;
+            }
+        }
+
+        button {
+            border: 0;
+            outline: 0;
+            background-color: transparent;
+            position: absolute;
+            z-index: 2;
+            right: 0;
+            top: 0;
+            padding: 0;
+            margin-right: 7px !important;
+            height: 100%;
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}
