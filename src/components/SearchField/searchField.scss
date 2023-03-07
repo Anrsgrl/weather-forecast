@@ -15,6 +15,13 @@
         }
     }
 
+    P {
+        @media (max-width: 767px) {
+            font-size: 15px;
+            text-align: center;
+        }
+    }
+
     .inputs {
         position: relative;
         z-index: 1;
@@ -31,16 +38,27 @@
             }
         }
 
+        .loading {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            color: $main-green;
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
         button {
             border: 0;
             outline: 0;
             background-color: transparent;
             position: absolute;
             z-index: 2;
-            right: 0;
+            right: 10px;
             top: 0;
             padding: 0;
-            margin-right: 7px !important;
             height: 100%;
 
             svg {

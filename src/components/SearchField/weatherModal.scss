@@ -2,13 +2,11 @@
 @import "../../vendors/variables";
 
 .modal-open {
-    visibility: visible;
-    opacity: 1;
+    display: block !important;
 }
 
 .weather-modal {
-    visibility: hidden;
-    opacity: 0;
+    display: none;
     max-width: 600px;
     background-color: $main-gray;
     padding: 30px;
@@ -17,6 +15,8 @@
     transition: all 300ms ease-in-out;
     position: absolute;
     z-index: 10;
+    animation-name: x;
+    animation-duration: 1s;
 
     @media(max-width: 767px) {
         max-width: 500px;
@@ -53,6 +53,10 @@
         flex-direction: column;
         align-items: center;
 
+        span {
+            font-size: 11px;
+        }
+
         img {
             width: 100%;
             height: 100%;
@@ -88,6 +92,7 @@
             .info-title {
                 @include flexCenter;
                 color: $p-gray;
+                cursor: pointer;
 
                 h6 {
                     margin: 0;
@@ -97,7 +102,21 @@
                     width: 25px;
                     height: 25px;
                 }
+
+                &:hover {
+                    color: $low-gray ;
+                }
             }
         }
+    }
+}
+
+@keyframes x {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }
